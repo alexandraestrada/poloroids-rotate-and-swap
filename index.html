@@ -1,0 +1,244 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<title></title>
+	<style>
+		
+		#container {
+			width:1502px;
+			height:1000px;
+			background-color:#CCC;
+		}
+		.picContainer {
+			width:300px;
+			height:1000px;
+			position:relative;
+			float:left;
+		}
+		#contentContainer {
+			width:900px;
+			background-color:#fff;
+			position:relative;
+			float:left;
+			height:1000px;
+			border:1px solid #eee;	
+			z-index: 1;	
+		}
+	
+		.pics {
+			position:relative;
+			width:300px;
+			height:1000px;
+			list-style-type: none;
+			overflow: hidden;
+			padding:0px;
+		}
+		/*.pics a {
+			text-decoration: none;
+			width:auto;
+			position:absolute;
+			padding:10px 10px 30px 10px;
+
+		}*/
+		.pics li {
+            background:#fff;
+
+            width:auto;
+            padding:25px 25px 30px 25px;
+            text-align:center;
+            text-decoration:none;
+            color:#cca;
+            font-size:28px;
+            font-family:'Nothing You Could Do', cursive;
+            font-weight:bold;
+
+            
+            -webkit-transition:all .30s;
+            -moz-transition:all .30s;
+            -o-transition:all .30s;
+            transition:all .30s;
+            position:absolute;
+        }
+        .pics img {
+            display:block;
+            padding-bottom:20px;
+        }
+        .pics:hover {
+        	overflow:visible;
+        }
+        .pics li:hover {
+            z-index:100;
+            overflow: visible;
+        }
+        .pics a:after {
+            content:attr(title);
+        }
+
+/*.pics li:nth-child(1n) a {
+
+    top:0%;
+    left:60%;
+}
+.pics li:nth-child(2n) a {
+
+    top:40%;
+    left:80%;
+}
+.pics li:nth-child(3n) a {
+
+    top:50%;
+    left:-10%;
+}
+.pics li:nth-child(4n) a {
+
+    top:0%;
+    left:-10%;
+}
+.pics li:nth-child(5n) a {
+
+    top:50%;
+    left:20%;
+    z-index:3;
+}
+.pics li:nth-child(6n) a {
+
+    top:60%;
+    left:55%;
+}
+.pics li:nth-child(7n) a {
+
+    top:0%;
+    left:25%;
+}
+.pics li a:hover {
+    -webkit-transform:rotate(30deg);
+    -moz-transform:rotate(30deg);
+    transform:rotate(30deg);
+}*/
+        .pics li:nth-child(1n) {
+            -webkit-transform:rotate(30deg);
+            -moz-transform:rotate(30deg);
+            transform:rotate(30deg);
+            top:0%;
+            left:60%;
+        }
+        .pics li:nth-child(2n){
+            -webkit-transform:rotate(-30deg);
+            -moz-transform:rotate(-30deg);
+            transform:rotate(-30deg);
+            top:30%;
+            left:40%;
+        }
+        .pics li:nth-child(3n){
+            -webkit-transform:rotate(40deg);
+            -moz-transform:rotate(40deg);
+            transform:rotate(40deg);
+            top:50%;
+            left:-10%;
+        }
+        .pics li:nth-child(4n){
+            -webkit-transform:rotate(-30deg);
+            -moz-transform:rotate(-30deg);
+            transform:rotate(-30deg);
+            top:0%;
+            left:-10%;
+        }
+        .pics li:nth-child(5n){
+            -webkit-transform:rotate(30deg);
+            -moz-transform:rotate(30deg);
+            transform:rotate(30deg);
+            top:25%;
+            left:5%;
+            z-index:3;
+        }
+        .pics li:nth-child(6n){
+            -webkit-transform:rotate(30deg);
+            -moz-transform:rotate(30deg);
+            transform:rotate(30deg);
+            top:60%;
+            left:55%;
+        }
+        .pics li:nth-child(7n){
+            -webkit-transform:rotate(10deg);
+            -moz-transform:rotate(10deg);
+            transform:rotate(10deg);
+            top:0%;
+            left:25%;
+        }
+        .pics li:hover {
+            -webkit-transform:rotate(0deg) scale(1.2,1.2);
+            -moz-transform:rotate(0deg) scale(1.2,1.2);
+            transform:rotate(0deg) scale(1.2,1.2);
+        }
+	</style>
+</head>
+<body>
+<div id="container">
+<div class="picContainer left">	
+	<ul class="pics">
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+	</ul>
+</div>
+<div id="contentContainer">
+
+</div>
+<div class="picContainer right">	
+	<ul class="pics">
+
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+		<li><img src="" /></li>
+	</ul>
+
+</div>
+</div>
+<script>
+
+   $(window).load(function() {
+        var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
+
+       
+        $('li').each(function() {   
+             $(this).find('img').attr('src', images[Math.floor(Math.random() * 8)+ 1]);
+
+           
+
+        })
+          setInterval(function() {
+                $('li').each(function() {
+                    var image = $(this).find('img');
+                    image.fadeOut(2000, function() {
+                         image.fadeIn(2000);
+                        $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
+                    });
+                })
+            }, 5000);
+
+        
+        // setInterval(function() {
+        //     $('li').each(function() {
+        //         var image = $(this).find('img');
+        //         image.fadeOut(2000, function() {
+        //             image.fadeIn(2000);
+        //             $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
+        //         });
+                
+        //     }, 5000);
+
+        // })
+       
+   })
+
+</script>
+</body>
+</html>
