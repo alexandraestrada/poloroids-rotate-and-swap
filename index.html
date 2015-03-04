@@ -16,7 +16,7 @@
 			float:left;
 		}
 		#contentContainer {
-			width:900px;
+			width:700px;
 			background-color:#fff;
 			position:relative;
 			float:left;
@@ -175,29 +175,29 @@
 <body>
 <div id="container">
 <div class="picContainer left">	
-	<ul class="pics">
-		<li class="first"><img src="" /></li>
+	<ul class="pics" id="pics1">
+<!-- 		<li class="first"><img src="" /></li>
 		<li class="second"><img src="" /></li>
 		<li class="third"><img src="" /></li>
 		<li class="first"><img src="" /></li>
 		<li class="second"><img src="" /></li>
 		<li class="third"><img src="" /></li>
-		<li class="first"><img src="" /></li>
+		<li class="first"><img src="" /></li> -->
 	</ul>
 </div>
 <div id="contentContainer">
 
 </div>
 <div class="picContainer right">	
-	<ul class="pics">
-
+	<ul class="pics" id = "pics2">
+<!-- 
 		<li class="second"><img src="" /></li>
 		<li class="third"><img src="" /></li>
 		<li class="first"><img src="" /></li>
 		<li class="second"><img src="" /></li>
 		<li class="third"><img src="" /></li>
 		<li class="first"><img src="" /></li>
-		<li class="second"><img src="" /></li>
+		<li class="second"><img src="" /></li> -->
 	</ul>
 
 </div>
@@ -205,40 +205,56 @@
 <script>
 
    $(window).load(function() {
-        var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
+        var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170/cats', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
 
-       
-        $('li').each(function() {   
-             $(this).find('img').attr('src', images[Math.floor(Math.random() * 8)+ 1]);
+        // var start = []
+        // for (var i = 0; i < 7; i++) {
+        //     start.push(images[i]);
+            
+        // }
+        // $.each(start,function(i,v) {
+        //     $('.pics').append('<li>' + '<img src="' + start[i]+'"' + '/>' +'</li>');
+        // })
 
-        })
-        setInterval(function() {
-            $('li.first').each(function() {
-                var image = $(this).find('img');
-                image.fadeOut(5000, function() {
-                image.fadeIn(5000);
-                $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-                });
-            })
-        }, 5000);
-        setInterval(function() {
-            $('li.second').each(function() {
-                var image = $(this).find('img');
-                image.fadeOut(5000, function() {
-                image.fadeIn(5000);
-                $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-                });
-            })
-        }, 9000);
-        setInterval(function() {
-            $('li.third').each(function() {
-                var image = $(this).find('img');
-                image.fadeOut(5000, function() {
-                image.fadeIn(5000);
-                $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-                });
-            })
-        }, 12000);
+        for(var i=0; i < 3; i++) {
+            if(i < 3) {
+                $('#pics1').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
+            }
+            // else {
+            //     $('#pics2').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
+            // }
+        }
+
+
+
+ 
+        // setInterval(function() {
+        //     $('li.first').each(function() {
+        //         var image = $(this).find('img');
+        //         image.fadeOut(7000, function() {
+        //         image.fadeIn(5000);
+        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
+        //         });
+        //     })
+        // }, 5000);
+        // setInterval(function() {
+        //     $('li.second').each(function() {
+        //         var image = $(this).find('img');
+        //         image.fadeOut(7000, function() {
+        //         image.fadeIn(5000);
+        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
+        //         });
+        //     })
+        // }, 9000);
+        // setInterval(function() {
+        //     $('li.third').each(function() {
+        //         var image = $(this).find('img');
+        //         image.fadeOut(7000, function() {
+        //         image.fadeIn(5000);
+        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
+        //         });
+        //     })
+        // }, 12000);
 
 
        
