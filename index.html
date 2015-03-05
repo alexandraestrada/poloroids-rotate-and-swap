@@ -44,7 +44,7 @@
             background:#fff;
 
             width:auto;
-            padding:25px 25px 30px 25px;
+            padding:25px 25px 50px 25px;
             text-align:center;
             text-decoration:none;
             color:#cca;
@@ -207,17 +207,10 @@
    $(window).load(function() {
         var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170/cats', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
 
-        // var start = []
-        // for (var i = 0; i < 7; i++) {
-        //     start.push(images[i]);
-            
-        // }
-        // $.each(start,function(i,v) {
-        //     $('.pics').append('<li>' + '<img src="' + start[i]+'"' + '/>' +'</li>');
-        // })
+     
 
-        for(var i=0; i < 3; i++) {
-            if(i < 3) {
+        for(var i=0; i < 7; i++) {
+            if(i < 7) {
                 $('#pics1').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
             }
             // else {
@@ -226,37 +219,31 @@
         }
 
 
+            setInterval(function() {
 
- 
-        // setInterval(function() {
-        //     $('li.first').each(function() {
-        //         var image = $(this).find('img');
-        //         image.fadeOut(7000, function() {
-        //         image.fadeIn(5000);
-        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-        //         });
-        //     })
-        // }, 5000);
-        // setInterval(function() {
-        //     $('li.second').each(function() {
-        //         var image = $(this).find('img');
-        //         image.fadeOut(7000, function() {
-        //         image.fadeIn(5000);
-        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-        //         });
-        //     })
-        // }, 9000);
-        // setInterval(function() {
-        //     $('li.third').each(function() {
-        //         var image = $(this).find('img');
-        //         image.fadeOut(7000, function() {
-        //         image.fadeIn(5000);
-        //         $(this).attr('src', images[Math.floor(Math.random() * 8)+ 1])
-        //         });
-        //     })
-        // }, 12000);
-
-
+                    var liTemp = -1;
+                    var imageTemp = -1
+                    var listLength = $("#pics1 li").length;
+                    var imagesLength = images.length;
+                    var liRandom = Math.floor(Math.random()*listLength) + 1;
+                    var imageRandom = Math.floor(Math.random()*imagesLength) + 1;
+                    var listSelected = $("#pics1 li:nth-child("+  liRandom +")")
+                    var image = $(listSelected).find('img');
+                    while (liRandom == liTemp){
+                            liRandom = liRandom
+                            }; 
+                    liTemp = liRandom;
+                    image.fadeOut(7000,function() { 
+                        image.fadeIn(1000);
+                        $(this).attr('src', images[imageRandom]);
+                        while(imageRandom == imageTemp) {
+                            imageRandom = imageRandom; 
+                        }
+                        imageTemp = imageRandom;
+                    });
+                   
+            }, 7000);
+       
        
    })
 
