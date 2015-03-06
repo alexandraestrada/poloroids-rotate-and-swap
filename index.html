@@ -74,47 +74,7 @@
             content:attr(title);
         }
 
-/*.pics li:nth-child(1n) a {
 
-    top:0%;
-    left:60%;
-}
-.pics li:nth-child(2n) a {
-
-    top:40%;
-    left:80%;
-}
-.pics li:nth-child(3n) a {
-
-    top:50%;
-    left:-10%;
-}
-.pics li:nth-child(4n) a {
-
-    top:0%;
-    left:-10%;
-}
-.pics li:nth-child(5n) a {
-
-    top:50%;
-    left:20%;
-    z-index:3;
-}
-.pics li:nth-child(6n) a {
-
-    top:60%;
-    left:55%;
-}
-.pics li:nth-child(7n) a {
-
-    top:0%;
-    left:25%;
-}
-.pics li a:hover {
-    -webkit-transform:rotate(30deg);
-    -moz-transform:rotate(30deg);
-    transform:rotate(30deg);
-}*/
         .pics li:nth-child(1n) {
             -webkit-transform:rotate(30deg);
             -moz-transform:rotate(30deg);
@@ -176,13 +136,7 @@
 <div id="container">
 <div class="picContainer left">	
 	<ul class="pics" id="pics1">
-<!-- 		<li class="first"><img src="" /></li>
-		<li class="second"><img src="" /></li>
-		<li class="third"><img src="" /></li>
-		<li class="first"><img src="" /></li>
-		<li class="second"><img src="" /></li>
-		<li class="third"><img src="" /></li>
-		<li class="first"><img src="" /></li> -->
+
 	</ul>
 </div>
 <div id="contentContainer">
@@ -190,14 +144,6 @@
 </div>
 <div class="picContainer right">	
 	<ul class="pics" id = "pics2">
-<!-- 
-		<li class="second"><img src="" /></li>
-		<li class="third"><img src="" /></li>
-		<li class="first"><img src="" /></li>
-		<li class="second"><img src="" /></li>
-		<li class="third"><img src="" /></li>
-		<li class="first"><img src="" /></li>
-		<li class="second"><img src="" /></li> -->
 	</ul>
 
 </div>
@@ -207,7 +153,7 @@
    $(window).load(function() {
         var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170/cats', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
 
-     
+        
 
         for(var i=0; i < 7; i++) {
             if(i < 7) {
@@ -217,8 +163,32 @@
             //     $('#pics2').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
             // }
         }
+        var imageIndex = $('#pics1 li').last().index()
+            // setInterval(function() {
 
-
+            //         var liTemp = -1;
+            //         var imageTemp = -1
+            //         var listLength = $("#pics1 li").length;
+            //         var imagesLength = images.length;
+            //         var liRandom = Math.floor(Math.random()*listLength) + 1;
+            //         var imageRandom = Math.floor(Math.random()*imagesLength) + 1;
+            //         var listSelected = $("#pics1 li:nth-child("+  liRandom +")")
+            //         var image = $(listSelected).find('img');
+            //         while (liRandom == liTemp){
+            //                 liRandom = liRandom
+            //                 }; 
+            //         liTemp = liRandom;
+            //         image.fadeOut(7000,function() { 
+            //             image.fadeIn(1000);
+            //             $(this).attr('src', images[imageRandom]);
+            //             while(imageRandom == imageTemp) {
+            //                 imageRandom = imageRandom; 
+            //             }
+            //             imageTemp = imageRandom;
+            //         });
+                   
+            // }, 7000);
+         
             setInterval(function() {
 
                     var liTemp = -1;
@@ -226,23 +196,23 @@
                     var listLength = $("#pics1 li").length;
                     var imagesLength = images.length;
                     var liRandom = Math.floor(Math.random()*listLength) + 1;
-                    var imageRandom = Math.floor(Math.random()*imagesLength) + 1;
                     var listSelected = $("#pics1 li:nth-child("+  liRandom +")")
+                    var imageIndex = $('li').last().index();   
+                    var nextImage = imageIndex;
                     var image = $(listSelected).find('img');
+
                     while (liRandom == liTemp){
                             liRandom = liRandom
                             }; 
                     liTemp = liRandom;
+
                     image.fadeOut(7000,function() { 
-                        image.fadeIn(1000);
-                        $(this).attr('src', images[imageRandom]);
-                        while(imageRandom == imageTemp) {
-                            imageRandom = imageRandom; 
-                        }
-                        imageTemp = imageRandom;
+                        image.fadeIn(1000); 
+                        $(this).attr('src', images[nextImage]);
+                        
                     });
                    
-            }, 7000);
+            }, 2000);
        
        
    })
