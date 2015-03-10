@@ -149,35 +149,101 @@
 </div>
 </div>
 <script>
-
-   $(window).load(function() {
-        var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170/cats', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats'];
-
-        
-
+       var images = ['http://lorempixel.com/170/170/fashion', 'http://lorempixel.com/170/170/city', 'http://lorempixel.com/170/170/travel', 'http://lorempixel.com/170/170/sports','http://lorempixel.com/170/170/cats', 'http://lorempixel.com/170/170/nature', 'http://lorempixel.com/170/170/people', 'http://lorempixel.com/170/170/transport', 'http://lorempixel.com/170/170/food', 'http://lorempixel.com/170/170/technics', 'http://lorempixel.com/170/170/business', 'http://lorempixel.com/170/170/cats', 'http://placekitten.com/g/170/170'];
+        var usedImages =[]
+        var interval
+    $(window).load(function() {
+     
         for(var i=0; i < 7; i++) {
             if(i < 7) {
                 $('#pics1').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
             }
-            // else {
-            //     $('#pics2').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
-            // }
+        // else {
+        // $('#pics2').append('<li>' + '<img src="' + images[i]+'"' + '/>' +'</li>');
+        // }
         }
-        var imageIndex = $('#pics1 li').last().index()
+        // var stopInt= setInterval(imageChange, 2000); 
+    
+        // function imageChange() {
+        setInterval(function() {
+            var liTemp = -1;
+            var listLength = $("#pics1 li").length;
+            var liRandom = Math.floor(Math.random()*listLength) + 1;
+            var listSelected = $("#pics1 li:nth-child("+ liRandom +")")
+            console.log(listSelected)
+            var image = $(listSelected).find('img');
+            while (liRandom == liTemp) {
+                liRandom = liRandom
+            };
+            liTemp = liRandom;
+
+            if (images.length == 0 ) {
+                    clearInterval()
+                    return false
+                } 
+               
+            image.fadeOut(2000,function() {
+                var oldImg = image.attr('src')
+                console.log(oldImg)
+                var indexImg = images.indexOf(oldImg);
+                images.splice(indexImg,1)
+                usedImages.push(oldImg);
+                image.fadeIn(1000);
+                     $(this).attr('src', images[Math.floor(Math.random()*images.length) + 1]);
+                     console.log($(this).attr('src'))
+                     
+     
+            })           
+            console.log(images)
+        },2000)
+    })
+            
+    
+                
+           
+                 
+                   
+    
+
+
+
+// setInterval(function() {
+            // var liTemp = -1;
+            // var imageTemp = -1
+            // var listLength = $("#pics1 li").length;
+            // var imagesLength = images.length;
+            // var liRandom = Math.floor(Math.random()*listLength) + 1;
+            // var imageRandom = Math.floor(Math.random()*imagesLength) + 1;
+            // var listSelected = $("#pics1 li:nth-child("+ liRandom +")")
+            // var image = $(listSelected).find('img');
+            // while (liRandom == liTemp){
+            // liRandom = liRandom
+            // };
+            // liTemp = liRandom;
+            // image.fadeOut(7000,function() {
+            // image.fadeIn(1000);
+            // $(this).attr('src', images[imageRandom]);
+            // while(imageRandom == imageTemp) {
+            // imageRandom = imageRandom;
+            // }
+            // imageTemp = imageRandom;
+            // });
+            // }, 7000);
+
             // setInterval(function() {
 
             //         var liTemp = -1;
             //         var imageTemp = -1
             //         var listLength = $("#pics1 li").length;
             //         var imagesLength = images.length;
-            //         var liRandom = Math.floor(Math.random()*listLength) + 1;
+            //         var listItemRand = Math.floor(Math.random()*listLength) + 1;
             //         var imageRandom = Math.floor(Math.random()*imagesLength) + 1;
-            //         var listSelected = $("#pics1 li:nth-child("+  liRandom +")")
+            //         var listSelected = $("#pics1 li:nth-child("+  listItemRand +")")
             //         var image = $(listSelected).find('img');
-            //         while (liRandom == liTemp){
-            //                 liRandom = liRandom
+            //         while (listItemRand == liTemp){
+            //                 listItemRand = listItemRand
             //                 }; 
-            //         liTemp = liRandom;
+            //         liTemp = listItemRand;
             //         image.fadeOut(7000,function() { 
             //             image.fadeIn(1000);
             //             $(this).attr('src', images[imageRandom]);
@@ -188,34 +254,6 @@
             //         });
                    
             // }, 7000);
-         
-            setInterval(function() {
-
-                    var liTemp = -1;
-                    var imageTemp = -1
-                    var listLength = $("#pics1 li").length;
-                    var imagesLength = images.length;
-                    var liRandom = Math.floor(Math.random()*listLength) + 1;
-                    var listSelected = $("#pics1 li:nth-child("+  liRandom +")")
-                    var imageIndex = $('li').last().index();   
-                    var nextImage = imageIndex;
-                    var image = $(listSelected).find('img');
-
-                    while (liRandom == liTemp){
-                            liRandom = liRandom
-                            }; 
-                    liTemp = liRandom;
-
-                    image.fadeOut(7000,function() { 
-                        image.fadeIn(1000); 
-                        $(this).attr('src', images[nextImage]);
-                        
-                    });
-                   
-            }, 2000);
-       
-       
-   })
 
 </script>
 </body>
